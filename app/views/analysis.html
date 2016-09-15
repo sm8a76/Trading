@@ -1,0 +1,60 @@
+
+<div class="container">
+        <div class="row row-content">
+            <div class="col-xs-12 col-sm-offset-4">
+              <h3>Analysis of Stock Candidates</h3> 
+            </div>        
+        </div> 
+    
+        <div class="row  row-content">
+            <form class="form-horizontal" role="form" name="searchForm" ng-submit="search()" novalidate>
+                    <div class="form-group">
+                        <label for="symbol" class="col-xs-12 col-sm-2 control-label">Symbol</label>
+                        <div class="col-xs-12 col-sm-2">
+                            <input type="text" class="form-control" id="symbol" name="symbol" placeholder="Enter Your Symbol"
+                            ng-model="symbol" required>
+                              <span ng-show=" searchForm.searchInput.$error.required && ! searchForm.searchInput.$pristine" class="help-block">Symbol is required.</span>                    
+                        </div>
+                        <div class="col-xs-12 col-sm-8">
+                            <button type="submit" class="btn btn-primary" ng-disabled="searchForm.$invalid">Add Symbol</button>
+                        </div>                    
+                    </div>
+            </form>
+        </div> 
+    
+    
+        <div class="row  row-content">
+        
+            <table class="table table-striped table-bordered table-hover table-responsive">
+                <tr class="info">
+                    <th>Date</th>
+                    <th>Symbol</th>
+                    <th>Industry</th>
+                    <th>SubIndustry</th>
+                    <th>Trend</th>
+                    <th>Price</th>
+                    <th>Target price</th>
+                    <th>Profit</th>
+                    <th>ROI</th>
+                    <th>Exit criteria</th>
+                    <th>Max</th>
+                    <th>Min</th>
+                    <th>Now</th>
+                    <th>Volatility</th>
+                    <th>Symbol to buy</th>
+                    <th>Option</th>
+                    <th>Option price</th>
+                    <th>Report/Split</th>
+                    <th>Days left</th>
+                    <th>Notes</th>
+                </tr>
+            
+            </table>
+            
+            
+        </div>    
+    
+    
+    
+</div>         
+    

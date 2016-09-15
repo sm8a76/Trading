@@ -1,0 +1,134 @@
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a href="index.html">Home</a></li>
+                   <li class="active">My Groceries Lists</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>My Groceries Lists</h3>
+               <hr>
+            </div>
+        </div>
+        
+        <div class="row row-content">
+                <div class='col-xs-12 col-sm-4'>
+                    <select class="form-control"
+                       ng-model="currentListId"
+                       ng-options="list._id as list.name for list in myLists">
+                        <option value="">None</option>
+                    </select>  
+                    <span class="help-block">Select a grocery list.</span>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 col-sm-4">
+                        <button type="button" class="btn btn-success" ng-click="selectList(currentListId)">GO</button>
+                    </div>
+                </div>             
+        </div>
+        
+        <div class="row row-content">
+                <div class='col-xs-12 col-sm-4'>
+                    <select class="form-control"
+                       ng-model="currentSuperMarket"
+                       ng-options="supermarket.name as supermarket.name for supermarket in superMarkets">
+                        <option value="">None</option>
+                    </select>  
+                    <span class="help-block">Select a supermarket.</span>
+                </div>  
+                <div class="form-group">
+                    <div class="col-xs-12 col-sm-4">
+                        <button type="button" class="btn btn-success">GO</button>
+                    </div>
+                </div>   
+            
+                <div class="col-xs-12 col-sm-4">
+                    <h3>Total Cost <span class="label label-danger">{{totalCost/100 | currency}}</span></h3>
+                </div>            
+            
+        </div>
+        
+        
+        <div class="row row-content">
+            
+            <div class='col-xs-12'>
+               <ul class="media-list">
+                <li class="media" ng-repeat="result 
+                                             in currentList.theList | filter:filtText">
+                    <div class="media-left media-middle">
+                        <a ui-sref="app.dishdetails({id: result._id})">
+                        <img class="media-object img-thumbnail" height="250" width="200"
+                        ng-src={{result.image}} alt="Image Not Found">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h2 class="media-heading">{{result.name}}
+                        <span class="label label-danger label-xs">{{result.label}}</span>
+                        <span class="badge">{{result.price/100 | currency}} at {{result.bestPriceAt}}</span></h2>
+                        <p ng-show="showDetails">Quantity: {{result.quantity}}</p>
+                        <p ng-show="showDetails">Unit: {{result.grocery.quote.unit}}</p>
+                        <p ng-show="showDetails">Price: {{result.grocery.qoute.price}}</p>
+                        <p ng-show="showDetails">Available: {{result.available}}</p>
+                        <!-- 
+                        <button  ng-click="openAddToList(result._id)" class="btn btn-sm btn-success"
+                    type="button" > Add to List
+                        </button>
+                        -->
+                       <div class="form-group">    
+                           <div class="col-xs-12 col-sm-2">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="approve" value=""
+                                    ng-model="result.enabled">
+                                    <strong>Enabled?</strong>
+                                </label>
+                            </div>  
+                        </div>                     
+                        <div class="form-group">    
+                           <div class="col-xs-12 col-sm-2">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="approve" value=""
+                                    ng-model="result.isBought">
+                                    <strong>Bought?</strong>
+                                </label>
+                            </div>
+                        </div>                     
+                        <div class="form-group">                                
+                            <div class="col-xs-12 col-sm-2">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="approve" value=""
+                                    ng-model="result.enoughInHouse">
+                                    <strong>Enough?</strong>
+                                </label>
+                            </div>                        
+                        </div>                        
+                    </div>
+                </li>
+            </ul> 
+            </div>
+        </div>
+        
+        
+        <!--
+        <div class="row row-content">
+                <div class='col-xs-12 col-sm-4'>
+                    <select class="form-control"
+                       ng-model="currentSuperMarket"
+                       ng-options="supermarket.name as supermarket.name for supermarket in superMarkets">
+                        <option value="">None</option>
+                    </select>  
+                    <span class="help-block">Select a supermarket.</span>
+                </div>  
+                <div class="form-group">
+                    <div class="col-xs-12 col-sm-4">
+                        <button type="button" class="btn btn-success">See total cost</button>
+                    </div>
+                </div>              
+            
+        </div>
+        -->
+        
+        
+
+     </div>
